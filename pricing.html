@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing | UrbanStack</title>
+  <meta name="description" content="Simple, transparent pricing from UrbanStack. No hidden fees. Choose from Starter, Growth, or Enterprise plans.">
+  <link rel="stylesheet" href="base.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    .page-hero{padding:140px 0 60px;text-align:center}
+    .page-hero p{color:var(--text-muted);max-width:600px;margin:16px auto 0}
+    .pricing-toggle{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:48px}
+    .pricing-toggle__label{font-size:0.95rem;font-weight:500;color:var(--text-muted)}
+    .pricing-toggle__label.active{color:var(--text)}
+    .toggle-switch{position:relative;width:56px;height:30px}
+    .toggle-switch input{opacity:0;width:0;height:0}
+    .toggle-switch .slider{position:absolute;inset:0;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:50px;cursor:pointer;transition:all var(--transition)}
+    .toggle-switch .slider::before{content:'';position:absolute;width:22px;height:22px;border-radius:50%;background:var(--accent-1);top:3px;left:3px;transition:transform var(--transition)}
+    .toggle-switch input:checked+.slider::before{transform:translateX(26px)}
+    .toggle-switch input:checked+.slider{background:rgba(108,99,255,0.2);border-color:var(--accent-1)}
+
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+    .pricing-card{padding:40px 32px;text-align:center;position:relative}
+    .pricing-card.popular{border-color:var(--accent-1);box-shadow:0 0 40px rgba(108,99,255,0.2)}
+    .pricing-card__badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:6px 20px;background:var(--accent-1);color:#fff;font-size:0.75rem;font-weight:600;border-radius:50px;white-space:nowrap}
+    .pricing-card__name{font-size:1.3rem;font-weight:700;margin-bottom:8px}
+    .pricing-card__price{font-family:var(--font-heading);font-size:2.2rem;font-weight:700;margin-bottom:4px}
+    .pricing-card__price .currency{font-size:1.2rem;vertical-align:top;color:var(--text-muted)}
+    .pricing-card__best{font-size:0.85rem;color:var(--text-muted);margin-bottom:24px}
+    .pricing-card__features{text-align:left;margin-bottom:28px}
+    .pricing-card__features li{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:0.9rem;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,0.04)}
+    .pricing-card__features li i{color:var(--accent-2);flex-shrink:0}
+
+    /* FAQ */
+    .faq-list{max-width:700px;margin:0 auto}
+    .faq-item{border-bottom:1px solid var(--glass-border);overflow:hidden}
+    .faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-size:1rem;font-weight:500;color:var(--text);cursor:pointer;text-align:left;background:none;border:none;font-family:var(--font-body)}
+    .faq-question i{transition:transform var(--transition);flex-shrink:0;color:var(--text-muted)}
+    .faq-item.open .faq-question i{transform:rotate(180deg);color:var(--accent-1)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease}
+    .faq-item.open .faq-answer{max-height:200px;padding-bottom:20px}
+    .faq-answer p{font-size:0.9rem;color:var(--text-muted)}
+
+    .not-sure{text-align:center;margin-top:60px;padding:48px;background:var(--glass-bg);border-radius:var(--radius-xl);border:1px solid var(--glass-border)}
+    .not-sure h3{margin-bottom:12px}
+    .not-sure p{color:var(--text-muted);margin-bottom:20px}
+
+    @media(max-width:768px){.pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="gradient-mesh" aria-hidden="true"><div class="gradient-mesh__orb gradient-mesh__orb--1"></div><div class="gradient-mesh__orb gradient-mesh__orb--2"></div></div>
+
+  <nav class="navbar"><div class="navbar__inner"><a href="index.html" class="navbar__logo">Urban<span>Stack</span></a><div class="navbar__links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="portfolio.html">Our Work</a><a href="team.html">The Team</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div><div class="navbar__actions"><button class="theme-toggle" aria-label="Toggle theme"><i data-lucide="sun"></i></button><a href="contact.html" class="btn btn-primary btn-sm">Start a Project</a><button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></div></nav>
+  <div class="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="portfolio.html">Our Work</a><a href="team.html">The Team</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
+
+  <main id="main">
+    <section class="page-hero"><div class="container"><h1 class="hero__title">Simple, Transparent<br><span class="gradient-text">Pricing</span></h1><p>No surprises. No hidden fees. Just great work at fair prices.</p></div></section>
+
+    <section class="section" style="padding-top:0"><div class="container">
+      <div class="pricing-toggle">
+        <span class="pricing-toggle__label active" id="label-project">Project-Based</span>
+        <label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label>
+        <span class="pricing-toggle__label" id="label-monthly">Monthly Retainer</span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Starter -->
+        <div class="glass-card pricing-card reveal">
+          <h3 class="pricing-card__name">Starter</h3>
+          <div class="pricing-card__price price-project"><span class="currency">₹</span>50,000</div>
+          <div class="pricing-card__price price-monthly" style="display:none"><span class="currency">₹</span>25,000<span style="font-size:0.9rem;color:var(--text-muted)">/mo</span></div>
+          <p class="pricing-card__best">Best for landing pages & MVPs</p>
+          <ul class="pricing-card__features">
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> 1-2 week delivery</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> 2 revisions included</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> 7 days post-launch support</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> Responsive design</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> Basic SEO setup</li>
+          </ul>
+          <a href="contact.html" class="btn btn-ghost" style="width:100%;justify-content:center">Get Started</a>
+        </div>
+
+        <!-- Growth -->
+        <div class="glass-card pricing-card popular reveal">
+          <div class="pricing-card__badge">Most Popular</div>
+          <h3 class="pricing-card__name">Growth</h3>
+          <div class="pricing-card__price price-project"><span class="currency">₹</span>1,50,000</div>
+          <div class="pricing-card__price price-monthly" style="display:none"><span class="currency">₹</span>60,000<span style="font-size:0.9rem;color:var(--text-muted)">/mo</span></div>
+          <p class="pricing-card__best">Best for full web/app builds</p>
+          <ul class="pricing-card__features">
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> 4-8 week delivery</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> 5 revisions included</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> 30 days post-launch support</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> Custom UI/UX design</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> API integrations</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> Analytics & SEO</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Get Started</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="glass-card pricing-card reveal">
+          <h3 class="pricing-card__name">Enterprise</h3>
+          <div class="pricing-card__price price-project">Custom</div>
+          <div class="pricing-card__price price-monthly" style="display:none">Custom</div>
+          <p class="pricing-card__best">Best for scale-ups & SaaS</p>
+          <ul class="pricing-card__features">
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> Scoped delivery</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> Unlimited revisions</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> 90 days support + SLA</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> Dedicated team</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> Priority communication</li>
+            <li><i data-lucide="check" style="width:16px;height:16px"></i> Custom architecture</li>
+          </ul>
+          <a href="contact.html" class="btn btn-ghost" style="width:100%;justify-content:center">Let's Talk</a>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- FAQ -->
+    <section class="section"><div class="container">
+      <div class="section-header reveal"><h2>Frequently Asked <span class="gradient-text">Questions</span></h2></div>
+      <div class="faq-list">
+        <div class="faq-item reveal"><button class="faq-question">Do you work with international clients?<i data-lucide="chevron-down" style="width:20px;height:20px"></i></button><div class="faq-answer"><p>Absolutely! We work with clients worldwide. Most of our communication happens async via Slack, email, and scheduled video calls. We're flexible with time zones.</p></div></div>
+        <div class="faq-item reveal"><button class="faq-question">What's your payment structure?<i data-lucide="chevron-down" style="width:20px;height:20px"></i></button><div class="faq-answer"><p>We typically follow a 40-30-30 split: 40% upfront, 30% at midpoint, and 30% on delivery. For retainers, it's monthly billing in advance.</p></div></div>
+        <div class="faq-item reveal"><button class="faq-question">Do you sign NDAs?<i data-lucide="chevron-down" style="width:20px;height:20px"></i></button><div class="faq-answer"><p>Yes, we're happy to sign NDAs before any discussions. Client confidentiality is something we take very seriously.</p></div></div>
+        <div class="faq-item reveal"><button class="faq-question">What if I need changes after launch?<i data-lucide="chevron-down" style="width:20px;height:20px"></i></button><div class="faq-answer"><p>Every plan includes post-launch support. After that period, we offer ongoing maintenance retainers or can scope individual change requests at fair hourly rates.</p></div></div>
+        <div class="faq-item reveal"><button class="faq-question">Can you maintain my project long-term?<i data-lucide="chevron-down" style="width:20px;height:20px"></i></button><div class="faq-answer"><p>Definitely. We offer monthly maintenance plans that cover updates, performance monitoring, security patches, and feature additions.</p></div></div>
+        <div class="faq-item reveal"><button class="faq-question">How do we get started?<i data-lucide="chevron-down" style="width:20px;height:20px"></i></button><div class="faq-answer"><p>Simple! Fill out our contact form or email us at hello@urbanstack.dev. We'll schedule a free discovery call within 24 hours to understand your needs.</p></div></div>
+      </div>
+
+      <div class="not-sure reveal">
+        <h3>Not sure which plan?</h3>
+        <p>Let's chat about your project and find the perfect fit for your budget and timeline.</p>
+        <a href="contact.html" class="btn btn-primary">Contact Us <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a>
+      </div>
+    </div></section>
+  </main>
+
+  <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="navbar__logo" style="font-size:1.3rem">Urban<span>Stack</span></a><p>We Build What the Future Runs On.</p><div class="footer__socials"><a href="#" aria-label="GitHub"><i data-lucide="github" style="width:16px;height:16px"></i></a><a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a><a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width:16px;height:16px"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:16px;height:16px"></i></a></div></div><div class="footer__col"><h4>Company</h4><a href="index.html">Home</a><a href="team.html">About / Team</a><a href="blog.html">Blog</a></div><div class="footer__col"><h4>Services</h4><a href="services.html">Web Development</a><a href="services.html">App Development</a><a href="services.html">UI/UX Design</a><a href="services.html">Consulting</a></div><div class="footer__col"><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a></div></div><div class="footer__bottom"><span>© 2025 UrbanStack. All rights reserved.</span><span>Made with ☕ in Mumbai</span></div></div></footer>
+  <script src="main.js"></script>
+  <script>
+    // Pricing toggle label highlight
+    const toggle = document.querySelector('.pricing-toggle input');
+    const lp = document.getElementById('label-project');
+    const lm = document.getElementById('label-monthly');
+    if(toggle){toggle.addEventListener('change',()=>{lp.classList.toggle('active',!toggle.checked);lm.classList.toggle('active',toggle.checked)})}
+  </script>
+</body>
+</html>
