@@ -52,8 +52,29 @@
     .profile-socials a{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--glass-border);color:var(--text-muted);transition:all var(--transition)}
     .profile-socials a:hover{background:var(--accent-1);color:#fff;border-color:var(--accent-1)}
 
-    @media(max-width:768px){.banner-hero__name{font-size:2rem}.design-process{grid-template-columns:repeat(2,1fr)}.mini-projects,.inline-form{grid-template-columns:1fr}}
-    @media(max-width:480px){.design-process{grid-template-columns:1fr}}
+    @media(max-width:768px){
+      .banner-hero{min-height:50vh;padding:40px 0}
+      .banner-hero__name{font-size:2rem}
+      .banner-hero__role{font-size:1rem}
+      .banner-hero__tagline{font-size:0.9rem}
+      .design-process{grid-template-columns:repeat(2,1fr);gap:12px}
+      .process-step{padding:24px 12px}
+      .process-step__num{font-size:1.6rem}
+      .process-step h4{font-size:0.9rem}
+      .process-step p{font-size:0.78rem}
+      .mini-projects{grid-template-columns:1fr;gap:12px}
+      .mini-project{padding:20px}
+      .inline-form{grid-template-columns:1fr}
+      .profile-section{margin-bottom:40px}
+      .profile-section h2{font-size:1.3rem}
+      .keyword-cloud{gap:8px}
+      .keyword-cloud span{padding:8px 16px;font-size:0.8rem}
+      .keyword-cloud span:nth-child(odd){font-size:0.9rem}
+    }
+    @media(max-width:480px){
+      .banner-hero__name{font-size:1.6rem}
+      .design-process{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>

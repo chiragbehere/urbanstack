@@ -38,8 +38,29 @@
     .newsletter-form input{flex:1}
     .newsletter-success{display:none;color:var(--accent-2);font-weight:500;margin-top:12px}
 
-    @media(max-width:1024px){.featured-article{grid-template-columns:1fr}.blog-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:768px){.blog-grid{grid-template-columns:1fr}.newsletter-form{flex-direction:column}}
+    @media(max-width:1024px){
+      .featured-article{grid-template-columns:1fr}
+      .featured-article__cover{height:200px}
+      .blog-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:768px){
+      .page-hero{padding:100px 0 40px}
+      .blog-grid{grid-template-columns:1fr;gap:16px}
+      .blog-card__cover{height:160px}
+      .blog-card h3{font-size:1rem}
+      .featured-article{margin-bottom:40px;gap:24px}
+      .featured-article__cover{height:180px}
+      .featured-article__content h2{font-size:1.4rem}
+      .featured-article__excerpt{font-size:0.9rem}
+      .newsletter{padding:32px 20px;margin-top:40px}
+      .newsletter h3{font-size:1.2rem}
+      .newsletter-form{flex-direction:column;gap:12px}
+      .newsletter-form .btn{width:100%;justify-content:center}
+    }
+    @media(max-width:480px){
+      .featured-article__cover{height:150px}
+      .blog-card__cover{height:140px}
+    }
   </style>
 </head>
 <body>

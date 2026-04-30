@@ -46,7 +46,22 @@
     .not-sure h3{margin-bottom:12px}
     .not-sure p{color:var(--text-muted);margin-bottom:20px}
 
-    @media(max-width:768px){.pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}}
+    @media(max-width:768px){
+      .page-hero{padding:100px 0 40px}
+      .pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+      .pricing-card{padding:32px 24px}
+      .pricing-card__price{font-size:1.8rem}
+      .pricing-card__badge{font-size:0.7rem;padding:5px 16px}
+      .pricing-toggle{gap:12px;margin-bottom:36px}
+      .faq-question{font-size:0.95rem;padding:16px 0}
+      .faq-item.open .faq-answer{max-height:300px}
+      .not-sure{padding:32px 20px;margin-top:40px}
+      .not-sure h3{font-size:1.2rem}
+    }
+    @media(max-width:480px){
+      .pricing-card{padding:28px 20px}
+      .pricing-card__features li{font-size:0.85rem;padding:6px 0}
+    }
   </style>
 </head>
 <body>

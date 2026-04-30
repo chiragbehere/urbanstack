@@ -29,7 +29,22 @@
     .tech-logo{font-family:var(--font-mono);font-size:1rem;color:var(--text-muted);white-space:nowrap;opacity:0.6;transition:opacity var(--transition);padding:12px 24px;background:var(--glass-bg);border-radius:var(--radius-sm);border:1px solid var(--glass-border)}
     .tech-logo:hover{opacity:1;color:var(--accent-1)}
     @keyframes scroll-x{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    @media(max-width:768px){.services-grid{grid-template-columns:1fr}.timeline{flex-direction:column;gap:32px;align-items:center}.timeline::before{display:none}}
+    @media(max-width:768px){
+      .page-hero{padding:100px 0 40px}
+      .services-grid{grid-template-columns:1fr;gap:16px}
+      .service-card{padding:28px 20px}
+      .service-card h3{font-size:1.15rem}
+      .timeline{flex-direction:column;gap:32px;align-items:center}
+      .timeline::before{display:none}
+      .timeline-step__dot{width:48px;height:48px;font-size:1rem}
+      .timeline-step__desc{max-width:200px}
+      .tech-strip{padding:32px 0}
+    }
+    @media(max-width:480px){
+      .service-card{padding:24px 16px}
+      .service-card__icon{width:48px;height:48px;font-size:1.3rem}
+      .service-card__tags .tag{font-size:0.7rem}
+    }
   </style>
 </head>
 <body>

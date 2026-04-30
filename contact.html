@@ -25,7 +25,21 @@
     .availability__dot{width:8px;height:8px;border-radius:50%;background:var(--accent-2);animation:pulse 2s infinite}
     .contact-form-card{padding:40px}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media(max-width:768px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+    @media(max-width:768px){
+      .page-hero{padding:100px 0 40px}
+      .contact-grid{grid-template-columns:1fr;gap:24px}
+      .contact-info{padding:28px 20px}
+      .contact-info h3{font-size:1.15rem}
+      .contact-form-card{padding:28px 20px}
+      .form-row{grid-template-columns:1fr}
+      .contact-detail{margin-bottom:16px}
+      .contact-detail__icon{width:40px;height:40px}
+      .availability{font-size:0.8rem;padding:8px 16px}
+    }
+    @media(max-width:480px){
+      .contact-info{padding:24px 16px}
+      .contact-form-card{padding:24px 16px}
+    }
   </style>
 </head>
 <body>
