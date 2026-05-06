@@ -6,14 +6,17 @@
   <meta name="description" content="UrbanStack Privacy Policy — How we collect, use, and protect your personal data.">
   <link rel="stylesheet" href="base.css">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     .page-hero{padding:140px 0 40px;text-align:center}
     .page-hero p{color:var(--text-muted);margin:8px auto 0;font-size:0.9rem}
   </style>
 </head>
 <body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <canvas id="page-particles" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;"></canvas>
   <a href="#main" class="skip-link">Skip to content</a>
-  <nav class="navbar"><div class="navbar__inner"><a href="index.html" class="navbar__logo">Urban<span>Stack</span></a><div class="navbar__links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="portfolio.html">Our Work</a><a href="team.html">The Team</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div><div class="navbar__actions"><button class="theme-toggle" aria-label="Toggle theme"><i data-lucide="sun"></i></button><a href="contact.html" class="btn btn-primary btn-sm">Start a Project</a><button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></div></nav>
+  <nav class="navbar"><div class="navbar__inner"><a href="index.html" class="navbar__logo"><img src="logo.jpeg" alt="UrbanStack Solutions" class="navbar__logo-img"></a><div class="navbar__links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="portfolio.html">Our Work</a><a href="team.html">The Team</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div><div class="navbar__actions"><button class="theme-toggle" aria-label="Toggle theme"><i data-lucide="sun"></i></button><a href="contact.html" class="btn btn-primary btn-sm">Start a Project</a><button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></div></nav>
   <div class="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="portfolio.html">Our Work</a><a href="team.html">The Team</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
 
   <main id="main" class="page-content">
@@ -94,7 +97,8 @@
     </div></section>
   </main>
 
-  <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="navbar__logo" style="font-size:1.3rem">Urban<span>Stack</span></a><p>We Build What the Future Runs On.</p><div class="footer__socials"><a href="#" aria-label="GitHub"><i data-lucide="github" style="width:16px;height:16px"></i></a><a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a><a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width:16px;height:16px"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:16px;height:16px"></i></a></div></div><div class="footer__col"><h4>Company</h4><a href="index.html">Home</a><a href="team.html">About / Team</a><a href="blog.html">Blog</a></div><div class="footer__col"><h4>Services</h4><a href="services.html">Web Development</a><a href="services.html">App Development</a><a href="services.html">UI/UX Design</a><a href="services.html">Consulting</a></div><div class="footer__col"><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a></div></div><div class="footer__bottom"><span>© 2025 UrbanStack. All rights reserved.</span><span>Made with ☕ in Mumbai</span></div></div></footer>
+  <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="navbar__logo"><img src="logo.jpeg" alt="UrbanStack Solutions" class="navbar__logo-img"></a><p>We Build What the Future Runs On.</p><div class="footer__socials"><a href="#" aria-label="GitHub"><i data-lucide="github" style="width:16px;height:16px"></i></a><a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a><a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width:16px;height:16px"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:16px;height:16px"></i></a></div></div><div class="footer__col"><h4>Company</h4><a href="index.html">Home</a><a href="team.html">About / Team</a><a href="blog.html">Blog</a></div><div class="footer__col"><h4>Services</h4><a href="services.html">Web Development</a><a href="services.html">App Development</a><a href="services.html">UI/UX Design</a><a href="services.html">Consulting</a></div><div class="footer__col"><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a></div></div><div class="footer__bottom"><span>© 2025 UrbanStack. All rights reserved.</span><span>Made with ☕ in Mumbai</span></div></div></footer>
   <script src="main.js"></script>
+  <script src="particles.js"></script>
 </body>
 </html>

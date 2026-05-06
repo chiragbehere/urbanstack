@@ -7,13 +7,15 @@
   <link rel="stylesheet" href="base.css">
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     .page-hero{padding:140px 0 80px;text-align:center;position:relative}
     .page-hero p{color:var(--text-muted);max-width:600px;margin:16px auto 0}
     .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .service-card{padding:36px;position:relative;overflow:hidden}
-    .service-card__icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px;background:rgba(108,99,255,0.12);color:var(--accent-1)}
-    .service-card__icon--teal{background:rgba(0,217,163,0.12);color:var(--accent-2)}
+    .service-card__icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px;background:rgba(200,194,184,0.12);color:var(--accent-1)}
+    .service-card__icon--teal{background:rgba(138,131,121,0.12);color:var(--accent-2)}
     .service-card h3{font-size:1.3rem;margin-bottom:12px}
     .service-card p{font-size:0.9rem;color:var(--text-muted);margin-bottom:16px}
     .service-card__tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
@@ -48,48 +50,50 @@
   </style>
 </head>
 <body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <canvas id="page-particles" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;"></canvas>
   <a href="#main" class="skip-link">Skip to content</a>
   <div class="gradient-mesh" aria-hidden="true"><div class="gradient-mesh__orb gradient-mesh__orb--1"></div><div class="gradient-mesh__orb gradient-mesh__orb--2"></div></div>
 
-  <nav class="navbar" aria-label="Main navigation"><div class="navbar__inner"><a href="index.html" class="navbar__logo">Urban<span>Stack</span></a><div class="navbar__links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="portfolio.html">Our Work</a><a href="team.html">The Team</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div><div class="navbar__actions"><button class="theme-toggle" aria-label="Toggle theme"><i data-lucide="sun"></i></button><a href="contact.html" class="btn btn-primary btn-sm">Start a Project</a><button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></div></nav>
+  <nav class="navbar" aria-label="Main navigation"><div class="navbar__inner"><a href="index.html" class="navbar__logo"><img src="logo.jpeg" alt="UrbanStack Solutions" class="navbar__logo-img"></a><div class="navbar__links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="portfolio.html">Our Work</a><a href="team.html">The Team</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div><div class="navbar__actions"><button class="theme-toggle" aria-label="Toggle theme"><i data-lucide="sun"></i></button><a href="contact.html" class="btn btn-primary btn-sm">Start a Project</a><button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></div></nav>
   <div class="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="portfolio.html">Our Work</a><a href="team.html">The Team</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
 
   <main id="main">
-    <section class="page-hero"><div class="container"><h1 class="hero__title">What We <span class="gradient-text">Do</span></h1><p>From idea to launch and beyond — we cover every stage of your product's journey with expertise and care.</p></div></section>
+    <section class="page-hero"><div class="container"><h1 class="hero__title">What We <span class="gradient-text glow-text">Do</span></h1><p>From idea to launch and beyond — we cover every stage of your product's journey with expertise and care.</p></div></section>
 
     <section class="section" style="padding-top:0"><div class="container">
       <div class="services-grid">
-        <div class="glass-card service-card reveal">
+        <div class="glass-card glow-border service-card reveal">
           <div class="service-card__icon"><i data-lucide="globe" style="width:28px;height:28px"></i></div>
           <h3>Web Development</h3>
           <p>Custom websites, landing pages, SPAs, e-commerce platforms, and CMS integration. We build pixel-perfect, performant web experiences.</p>
           <div class="service-card__tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Vue</span><span class="tag">Tailwind</span><span class="tag">Node.js</span></div>
         </div>
-        <div class="glass-card service-card reveal">
+        <div class="glass-card glow-border service-card reveal">
           <div class="service-card__icon service-card__icon--teal"><i data-lucide="smartphone" style="width:28px;height:28px"></i></div>
           <h3>Mobile App Development</h3>
           <p>iOS & Android native + cross-platform mobile applications. Beautiful, fast, and built for real users.</p>
           <div class="service-card__tags"><span class="tag tag--teal">React Native</span><span class="tag tag--teal">Flutter</span><span class="tag">Swift</span><span class="tag">Kotlin</span></div>
         </div>
-        <div class="glass-card service-card reveal">
+        <div class="glass-card glow-border service-card reveal">
           <div class="service-card__icon"><i data-lucide="figma" style="width:28px;height:28px"></i></div>
           <h3>UI/UX Design</h3>
           <p>Wireframing, prototyping, design systems, and Figma handoff. Design that delights users and drives business goals.</p>
           <div class="service-card__tags"><span class="tag">Figma</span><span class="tag">Prototyping</span><span class="tag">Design Systems</span></div>
         </div>
-        <div class="glass-card service-card reveal">
+        <div class="glass-card glow-border service-card reveal">
           <div class="service-card__icon service-card__icon--teal"><i data-lucide="database" style="width:28px;height:28px"></i></div>
           <h3>Backend & APIs</h3>
           <p>RESTful & GraphQL APIs, microservices, serverless functions, and database architecture. Scalable backends that just work.</p>
           <div class="service-card__tags"><span class="tag tag--teal">Node.js</span><span class="tag tag--teal">Python</span><span class="tag">PostgreSQL</span><span class="tag">Firebase</span></div>
         </div>
-        <div class="glass-card service-card reveal">
+        <div class="glass-card glow-border service-card reveal">
           <div class="service-card__icon"><i data-lucide="lightbulb" style="width:28px;height:28px"></i></div>
           <h3>Tech Consulting</h3>
           <p>Architecture reviews, code audits, MVP strategy, and team mentoring. Get expert guidance without the agency price tag.</p>
           <div class="service-card__tags"><span class="tag">Architecture</span><span class="tag">Code Audits</span><span class="tag">MVP Strategy</span></div>
         </div>
-        <div class="glass-card service-card reveal">
+        <div class="glass-card glow-border service-card reveal">
           <div class="service-card__icon service-card__icon--teal"><i data-lucide="shield-check" style="width:28px;height:28px"></i></div>
           <h3>Maintenance & Support</h3>
           <p>Ongoing support, performance monitoring, updates, and SLAs. We keep your product running smoothly post-launch.</p>
@@ -101,7 +105,7 @@
     <!-- Process -->
     <section class="process-section">
       <div class="container">
-        <div class="section-header reveal"><h2>Our <span class="gradient-text">Process</span></h2><p>A proven 6-step workflow that delivers results on time, every time.</p></div>
+        <div class="section-header reveal"><h2>Our <span class="gradient-text glow-text">Process</span></h2><p>A proven 6-step workflow that delivers results on time, every time.</p></div>
         <div class="timeline">
           <div class="timeline-step reveal"><div class="timeline-step__dot"><i data-lucide="search" style="width:24px;height:24px"></i></div><div class="timeline-step__label">Discovery</div><div class="timeline-step__desc">Understand goals & requirements</div></div>
           <div class="timeline-step reveal"><div class="timeline-step__dot"><i data-lucide="pen-tool" style="width:24px;height:24px"></i></div><div class="timeline-step__label">Design</div><div class="timeline-step__desc">Wireframes & visual design</div></div>
@@ -116,7 +120,7 @@
     <!-- Tech Stack -->
     <section class="section">
       <div class="container">
-        <div class="section-header reveal"><h2>Our <span class="gradient-text">Tech Stack</span></h2></div>
+        <div class="section-header reveal"><h2>Our <span class="gradient-text glow-text">Tech Stack</span></h2></div>
         <div class="tech-strip"><div class="tech-strip__track">
           <div class="tech-logo">React</div><div class="tech-logo">Next.js</div><div class="tech-logo">Flutter</div><div class="tech-logo">Node.js</div><div class="tech-logo">PostgreSQL</div><div class="tech-logo">Firebase</div><div class="tech-logo">Figma</div><div class="tech-logo">AWS</div><div class="tech-logo">TypeScript</div><div class="tech-logo">Python</div>
           <div class="tech-logo">React</div><div class="tech-logo">Next.js</div><div class="tech-logo">Flutter</div><div class="tech-logo">Node.js</div><div class="tech-logo">PostgreSQL</div><div class="tech-logo">Firebase</div><div class="tech-logo">Figma</div><div class="tech-logo">AWS</div><div class="tech-logo">TypeScript</div><div class="tech-logo">Python</div>
@@ -128,7 +132,8 @@
     <section class="cta-banner"><div class="container"><h2>Have a project in mind?</h2><a href="contact.html" class="btn">Let's Talk <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a></div></section>
   </main>
 
-  <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="navbar__logo" style="font-size:1.3rem">Urban<span>Stack</span></a><p>We Build What the Future Runs On.</p><div class="footer__socials"><a href="#" aria-label="GitHub"><i data-lucide="github" style="width:16px;height:16px"></i></a><a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a><a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width:16px;height:16px"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:16px;height:16px"></i></a></div></div><div class="footer__col"><h4>Company</h4><a href="index.html">Home</a><a href="team.html">About / Team</a><a href="blog.html">Blog</a></div><div class="footer__col"><h4>Services</h4><a href="services.html">Web Development</a><a href="services.html">App Development</a><a href="services.html">UI/UX Design</a><a href="services.html">Consulting</a></div><div class="footer__col"><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a></div></div><div class="footer__bottom"><span>© 2025 UrbanStack. All rights reserved.</span><span>Made with ☕ in Mumbai</span></div></div></footer>
+  <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="navbar__logo"><img src="logo.jpeg" alt="UrbanStack Solutions" class="navbar__logo-img"></a><p>We Build What the Future Runs On.</p><div class="footer__socials"><a href="#" aria-label="GitHub"><i data-lucide="github" style="width:16px;height:16px"></i></a><a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a><a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width:16px;height:16px"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:16px;height:16px"></i></a></div></div><div class="footer__col"><h4>Company</h4><a href="index.html">Home</a><a href="team.html">About / Team</a><a href="blog.html">Blog</a></div><div class="footer__col"><h4>Services</h4><a href="services.html">Web Development</a><a href="services.html">App Development</a><a href="services.html">UI/UX Design</a><a href="services.html">Consulting</a></div><div class="footer__col"><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a></div></div><div class="footer__bottom"><span>© 2025 UrbanStack. All rights reserved.</span><span>Made with ☕ in Mumbai</span></div></div></footer>
   <script src="main.js"></script>
+  <script src="particles.js"></script>
 </body>
 </html>
